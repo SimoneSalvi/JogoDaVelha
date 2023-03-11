@@ -15,7 +15,14 @@ do
         Console.Clear();
         ImprimirTabuleiro(tabuleiro);
         Console.WriteLine("Simbolo atual [{0}]:", simbolo);
+        Console.WriteLine("Escolha sua jogada: ");
         string posicao = Console.ReadLine();
+
+        if (char.IsLetter(posicao[0]))
+        {
+            Console.WriteLine("Posição inexistente");
+            continue;
+        }
         if (int.Parse(posicao) > 9 || int.Parse(posicao) < 0)
         {
             Console.WriteLine("Posição inexistente");
@@ -62,6 +69,13 @@ void ImprimirTabuleiro(char[,] tabuleiro)
         for (int j = 0; j < tabuleiro.GetLength(1); j++)
         {
             Console.Write(" " + tabuleiro[i, j]);
+
+            if (j != 2)
+            {
+                Console.Write(" |");
+            }
+
+            Console.Write("");
         }
         Console.WriteLine();
     }
